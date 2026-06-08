@@ -1,0 +1,75 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import AppointmentCTA from '../components/AppointmentCTA.astro';
+import Icon from '../components/Icon.astro';
+import { specialties } from '../data/site';
+---
+<Layout title="Uzmanlık Alanları" description="Kaygı, depresyon, ilişki ve çift terapisi, travma, çocuk-ergen ve öz-değer alanlarında gizlilik odaklı terapi desteği.">
+  <PageHero eyebrow="Uzmanlık Alanları" title="Zorlandığınız her konuda, yanınızdayız">
+    <p>
+      İhtiyaçlarınız biriciktir. Aşağıdaki alanlarda, size özel ve kendi hızınızda ilerleyen
+      bir destek sunuyoruz. Hangi başlığın size uygun olduğundan emin değilseniz, ilk
+      görüşmede birlikte netleştirebiliriz.
+    </p>
+  </PageHero>
+
+  <div class="container-x space-y-6 pb-8">
+    {specialties.map((item, i) => (
+      <section
+        id={item.slug}
+        data-reveal-group
+        class="card scroll-mt-28 overflow-hidden p-7 sm:p-10"
+      >
+        <div class="grid gap-8 lg:grid-cols-12 lg:items-center">
+          <div class="lg:col-span-7">
+            <div class="reveal flex items-center gap-4">
+              <span class="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-sage-400/12 text-sage-500">
+                <Icon name={item.icon} class="h-6 w-6" />
+              </span>
+              <div>
+                <p class="text-[0.7rem] font-medium uppercase tracking-wider2 text-sage-400">{String(i + 1).padStart(2, '0')}</p>
+                <h2 class="font-serif text-2xl text-sage-700">{item.title}</h2>
+              </div>
+            </div>
+            <p class="reveal mt-5 max-w-prose2 text-pretty leading-relaxed text-sage-600/90">{item.description}</p>
+          </div>
+
+          <div class="reveal lg:col-span-5">
+            <div class="rounded-2xl bg-sand-100/60 p-6">
+              <p class="text-sm font-medium text-sage-700">Bunları yaşıyor olabilirsiniz</p>
+              <ul class="mt-4 grid gap-2.5">
+                {item.signs.map((s) => (
+                  <li class="flex items-center gap-3 text-sm text-sage-600/90">
+                    <span class="h-1.5 w-1.5 shrink-0 rounded-full bg-sage-400"></span>
+                    {s}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+    ))}
+  </div>
+
+  <!-- Hizmet türleri şeridi -->
+  <section class="container-x py-16">
+    <div data-reveal-group class="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+      {[
+        { icon: 'heart', t: 'Bireysel Terapi', d: 'Kişiye özel, birebir görüşmeler' },
+        { icon: 'link', t: 'Çift Terapisi', d: 'İlişkiler için güvenli bir masa' },
+        { icon: 'sprout', t: 'Çocuk & Ergen', d: 'Yaşa uygun, oyun temelli yaklaşım' },
+        { icon: 'video', t: 'Online Terapi', d: 'Neredeyseniz, orada destek' },
+      ].map((s) => (
+        <div class="reveal rounded-3xl border border-sand-200/80 bg-white/60 p-6 text-center">
+          <span class="mx-auto grid h-12 w-12 place-items-center rounded-2xl bg-sage-400/12 text-sage-500"><Icon name={s.icon} class="h-6 w-6" /></span>
+          <h3 class="mt-4 font-serif text-lg text-sage-700">{s.t}</h3>
+          <p class="mt-1.5 text-sm text-sage-600/80">{s.d}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <AppointmentCTA />
+</Layout>

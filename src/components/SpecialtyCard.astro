@@ -1,0 +1,25 @@
+---
+import Icon from './Icon.astro';
+import type { Specialty } from '../data/site';
+interface Props {
+  item: Specialty;
+  href?: string;
+}
+const { item, href = '/uzmanlik-alanlari' } = Astro.props;
+---
+<a
+  href={`${href}#${item.slug}`}
+  class="card reveal group flex flex-col p-7 hover:-translate-y-1 hover:border-sage-300 hover:bg-white hover:shadow-soft"
+>
+  <span class="grid h-12 w-12 place-items-center rounded-2xl bg-sage-400/12 text-sage-500
+               transition-colors duration-500 group-hover:bg-sage-400/20">
+    <Icon name={item.icon} class="h-6 w-6" />
+  </span>
+  <h3 class="mt-6 font-serif text-xl text-sage-700">{item.title}</h3>
+  <p class="mt-2 text-sm text-sage-500/90">{item.short}</p>
+  <p class="mt-4 text-pretty text-sm leading-relaxed text-sage-600/85">{item.description}</p>
+  <span class="mt-6 inline-flex items-center gap-1.5 text-sm font-medium text-sage-500 transition-colors group-hover:text-sage-700">
+    Daha fazla
+    <Icon name="arrow" class="h-4 w-4 transition-transform duration-500 group-hover:translate-x-1" />
+  </span>
+</a>

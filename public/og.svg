@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0.5" y2="1">
+      <stop offset="0" stop-color="#aab9ab"/>
+      <stop offset="0.55" stop-color="#8a9a8b"/>
+      <stop offset="1" stop-color="#57655a"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.3" r="0.55">
+      <stop offset="0" stop-color="#f0ebe3" stop-opacity="0.5"/>
+      <stop offset="1" stop-color="#f0ebe3" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <circle cx="600" cy="200" r="320" fill="url(#glow)"/>
+  <path d="M0 470 C 240 430 400 470 600 450 C 820 428 980 466 1200 440 L1200 630 L0 630 Z" fill="#47524a" opacity="0.35"/>
+  <path d="M0 520 C 280 488 460 512 660 496 C 860 480 1000 506 1200 492 L1200 630 L0 630 Z" fill="#3b443d" opacity="0.4"/>
+  <g transform="translate(96 250)">
+    <text font-family="Georgia, serif" font-size="34" fill="#f0ebe3" opacity="0.8" letter-spacing="6">DENGE PSİKOLOJİ &amp; TERAPİ</text>
+    <text y="90" font-family="Georgia, serif" font-size="76" fill="#fbf9f6" font-weight="600">Güvenli bir alan,</text>
+    <text y="170" font-family="Georgia, serif" font-size="76" fill="#e6ddd0" font-weight="600">kendine dönüş</text>
+  </g>
+  <g transform="translate(96 540)">
+    <text font-family="Helvetica, Arial, sans-serif" font-size="26" fill="#f0ebe3" opacity="0.85">Gizlilik odaklı · Bireysel · Çift · Çocuk-Ergen · Online Terapi</text>
+  </g>
+</svg>

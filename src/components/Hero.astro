@@ -1,0 +1,87 @@
+---
+import Icon from './Icon.astro';
+---
+<section data-hero class="relative overflow-hidden pt-32 pb-20 sm:pt-40 md:pb-28">
+  <!-- Yumuşak arka plan dokusu -->
+  <div class="pointer-events-none absolute inset-0 -z-10">
+    <div class="absolute -top-32 right-[-10%] h-[40rem] w-[40rem] rounded-full bg-sage-200/40 blur-3xl"></div>
+    <div class="absolute -bottom-40 left-[-15%] h-[34rem] w-[34rem] rounded-full bg-sand-200/50 blur-3xl"></div>
+  </div>
+
+  <div class="container-x grid items-center gap-14 lg:grid-cols-12 lg:gap-10">
+    <div class="lg:col-span-6">
+      <span data-hero-item class="eyebrow">
+        <span class="h-px w-6 bg-sage-400/60"></span>
+        Denge Psikoloji & Terapi
+      </span>
+
+      <h1 data-hero-item class="mt-6 text-balance font-serif text-[2.6rem] leading-[1.08] text-sage-700 sm:text-5xl md:text-6xl">
+        Güvenli bir alan,<br />
+        <span class="text-sage-400">kendine dönüş</span>
+      </h1>
+
+      <p data-hero-item class="mt-7 max-w-xl text-pretty text-lg leading-relaxed text-sage-600/90">
+        Yargılanmadan konuşabileceğiniz, sakin ve gizlilik odaklı bir terapi alanı.
+        Bireysel terapi, çift terapisi, çocuk-ergen ve online seanslarla,
+        kendi hızınızda iyileşmeye eşlik ediyoruz.
+      </p>
+
+      <div data-hero-item class="mt-9 flex flex-wrap items-center gap-4">
+        <a href="/randevu" class="btn-primary">
+          Randevu Al
+          <Icon name="arrow" class="h-4 w-4" />
+        </a>
+        <a href="/terapi-yaklasimi" class="btn-ghost">Terapi Yaklaşımımız</a>
+      </div>
+
+      <ul data-hero-item class="mt-10 flex flex-wrap items-center gap-x-7 gap-y-3 text-sm text-sage-600/80">
+        <li class="inline-flex items-center gap-2"><Icon name="lock" class="h-4 w-4 text-sage-400" /> %100 gizli görüşme</li>
+        <li class="inline-flex items-center gap-2"><Icon name="video" class="h-4 w-4 text-sage-400" /> Online seans imkânı</li>
+        <li class="inline-flex items-center gap-2"><Icon name="heart" class="h-4 w-4 text-sage-400" /> Yargısız yaklaşım</li>
+      </ul>
+    </div>
+
+    <!-- Yumuşak görsel — soyut, huzurlu kompozisyon -->
+    <div class="lg:col-span-6">
+      <div data-hero-item class="relative mx-auto max-w-md lg:max-w-none">
+        <div data-hero-art class="relative aspect-[4/5] overflow-hidden rounded-[2.5rem] shadow-soft-lg">
+          <svg viewBox="0 0 400 500" class="h-full w-full" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Sakin, huzurlu soyut görsel">
+            <defs>
+              <linearGradient id="hg" x1="0" y1="0" x2="0.6" y2="1">
+                <stop offset="0" stop-color="#aab9ab" />
+                <stop offset="0.55" stop-color="#8a9a8b" />
+                <stop offset="1" stop-color="#57655a" />
+              </linearGradient>
+              <radialGradient id="hglow" cx="0.5" cy="0.32" r="0.5">
+                <stop offset="0" stop-color="#f0ebe3" stop-opacity="0.9" />
+                <stop offset="1" stop-color="#f0ebe3" stop-opacity="0" />
+              </radialGradient>
+            </defs>
+            <rect width="400" height="500" fill="url(#hg)" />
+            <circle cx="200" cy="170" r="150" fill="url(#hglow)" />
+            <!-- Yumuşak tepe / ufuk hatları — huzur -->
+            <path d="M0 360 C 90 320 150 350 220 335 C 300 318 350 345 400 330 L400 500 L0 500 Z" fill="#47524a" opacity="0.35" />
+            <path d="M0 400 C 100 372 170 392 250 378 C 320 366 370 388 400 376 L400 500 L0 500 Z" fill="#3b443d" opacity="0.4" />
+            <!-- Güneş/ay — denge -->
+            <circle cx="200" cy="180" r="54" fill="#f0ebe3" opacity="0.92" />
+            <circle cx="200" cy="180" r="54" fill="none" stroke="#f0ebe3" stroke-opacity="0.4" stroke-width="14" />
+          </svg>
+          <div class="grain absolute inset-0"></div>
+        </div>
+
+        <!-- Yüzen güven kartı -->
+        <div class="absolute -bottom-6 -left-4 hidden rounded-2xl border border-sand-200/80 bg-white/90 px-5 py-4 shadow-soft backdrop-blur sm:block">
+          <div class="flex items-center gap-3">
+            <span class="grid h-10 w-10 place-items-center rounded-full bg-sage-400/15 text-sage-500">
+              <Icon name="leaf" class="h-5 w-5" />
+            </span>
+            <div>
+              <p class="font-serif text-sm text-sage-700">Kendi hızınızda</p>
+              <p class="text-xs text-sage-500/80">Acelesi olmayan bir süreç</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

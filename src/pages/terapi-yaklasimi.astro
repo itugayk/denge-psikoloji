@@ -1,0 +1,134 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import AppointmentCTA from '../components/AppointmentCTA.astro';
+import Icon from '../components/Icon.astro';
+import { approachSteps } from '../data/site';
+
+const methods = [
+  { t: 'Bilişsel Davranışçı Terapi', d: 'Düşünce, duygu ve davranış arasındaki bağı fark edip, işlevsiz kalıpları nazikçe dönüştürmek.' },
+  { t: 'Şema Terapi', d: 'Çocuklukta kök salan derin örüntüleri anlamak ve daha sağlıklı bir iç dünya inşa etmek.' },
+  { t: 'EMDR', d: 'Travmatik anıların yükünü, sizi yeniden yaşatmadan, beynin doğal iyileşmesiyle hafifletmek.' },
+  { t: 'Şefkat Odaklı Yaklaşım', d: 'Kendinize karşı daha anlayışlı olmayı öğrenmek; iç eleştirmeni yatıştırmak.' },
+];
+---
+<Layout title="Terapi Yaklaşımı" description="Gizlilik vurgulu, kanıta dayalı ve sizin hızınızda ilerleyen terapi yaklaşımımız. Online terapi seçeneği ve sürecin nasıl işlediği.">
+  <PageHero eyebrow="Terapi Yaklaşımı" title="Kanıta dayalı yöntemler, insana dokunan bir yaklaşım">
+    <p>
+      Terapi, bir teknikler bütününden çok bir ilişkidir. Bilimsel temelli yöntemleri,
+      her zaman sizin ihtiyacınıza ve hızınıza uyarlayarak kullanırız. Burada amaç,
+      sizi “düzeltmek” değil; kendi kaynaklarınıza yeniden ulaşmanıza eşlik etmektir.
+    </p>
+  </PageHero>
+
+  <!-- Gizlilik vurgusu -->
+  <section class="container-x">
+    <div data-reveal-group class="grain relative overflow-hidden rounded-[2.5rem] border border-sand-200/80 bg-white/70 p-8 sm:p-12">
+      <div class="relative grid gap-8 lg:grid-cols-12 lg:items-center">
+        <div class="reveal lg:col-span-8">
+          <span class="eyebrow"><span class="h-px w-6 bg-sage-400/60"></span> Gizlilik sözümüz</span>
+          <h2 class="mt-4 text-balance font-serif text-2xl leading-tight text-sage-700 sm:text-3xl">
+            Bu odada konuşulan, bu odada kalır
+          </h2>
+          <p class="mt-4 max-w-prose2 text-pretty leading-relaxed text-sage-600/90">
+            Mahremiyet bizim için bir kural değil, bir değerdir. Tüm görüşmeler mesleki sır
+            ve etik ilkeler kapsamında korunur. Paylaştıklarınız, yasal istisnalar dışında,
+            açık onayınız olmadan hiçbir üçüncü kişiyle paylaşılmaz. Kayıtlarınız güvenli
+            biçimde saklanır; randevu bilgileriniz yalnızca süreç için kullanılır.
+          </p>
+        </div>
+        <div class="reveal lg:col-span-4">
+          <div class="mx-auto grid h-32 w-32 place-items-center rounded-full bg-sage-400/12 text-sage-500">
+            <Icon name="lock" class="h-14 w-14" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Süreç -->
+  <section class="container-x py-20 md:py-28">
+    <div data-reveal-group class="mx-auto max-w-2xl text-center">
+      <span class="eyebrow reveal justify-center"><span class="h-px w-6 bg-sage-400/60"></span> Süreç</span>
+      <h2 class="reveal mt-4 text-balance font-serif text-3xl leading-tight text-sage-700 sm:text-4xl">Terapi nasıl ilerler?</h2>
+      <p class="reveal mt-5 text-pretty leading-relaxed text-sage-600/90">
+        Her süreç biriciktir, ama genel olarak dört aşamada birlikte ilerleriz.
+      </p>
+    </div>
+
+    <div data-reveal-group class="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+      {approachSteps.map((step) => (
+        <div class="reveal rounded-3xl border border-sand-200/80 bg-white/60 p-7">
+          <span class="font-serif text-3xl text-sage-300">{step.no}</span>
+          <h3 class="mt-3 font-serif text-xl text-sage-700">{step.title}</h3>
+          <p class="mt-2 text-pretty text-sm leading-relaxed text-sage-600/85">{step.text}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Yöntemler -->
+  <section class="relative overflow-hidden bg-sand-100/60 py-20 md:py-28">
+    <div class="grain absolute inset-0 opacity-60"></div>
+    <div class="container-x relative">
+      <div data-reveal-group class="max-w-2xl">
+        <span class="eyebrow reveal"><span class="h-px w-6 bg-sage-400/60"></span> Yöntemler</span>
+        <h2 class="reveal mt-4 text-balance font-serif text-3xl leading-tight text-sage-700 sm:text-4xl">Kullandığımız yaklaşımlar</h2>
+        <p class="reveal mt-5 text-pretty leading-relaxed text-sage-600/90">
+          Tek bir kalıba bağlı kalmaz, size en çok iyi gelecek yöntemleri bütünleştirerek çalışırız.
+        </p>
+      </div>
+      <div data-reveal-group class="mt-12 grid gap-6 sm:grid-cols-2">
+        {methods.map((m) => (
+          <div class="reveal flex items-start gap-4 rounded-3xl border border-sand-200/80 bg-white/70 p-7">
+            <span class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-sage-400/12 text-sage-500"><Icon name="check" class="h-5 w-5" /></span>
+            <div>
+              <h3 class="font-serif text-lg text-sage-700">{m.t}</h3>
+              <p class="mt-1.5 text-pretty text-sm leading-relaxed text-sage-600/85">{m.d}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Online terapi -->
+  <section class="container-x py-20 md:py-28">
+    <div class="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
+      <div data-reveal-group>
+        <div class="reveal relative aspect-[5/4] overflow-hidden rounded-[2.5rem] shadow-soft">
+          <svg viewBox="0 0 500 400" class="h-full w-full" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Online terapi ilüstrasyonu">
+            <defs><linearGradient id="og" x1="0" y1="0" x2="0.5" y2="1"><stop offset="0" stop-color="#aab9ab"/><stop offset="1" stop-color="#6e7f70"/></linearGradient></defs>
+            <rect width="500" height="400" fill="url(#og)" />
+            <rect x="150" y="120" width="200" height="140" rx="14" fill="#f0ebe3" opacity="0.92" />
+            <circle cx="250" cy="175" r="26" fill="#8a9a8b" />
+            <path d="M214 235 q36 -30 72 0 Z" fill="#8a9a8b" />
+            <rect x="150" y="270" width="200" height="10" rx="5" fill="#f0ebe3" opacity="0.5" />
+          </svg>
+          <div class="grain absolute inset-0"></div>
+        </div>
+      </div>
+      <div data-reveal-group>
+        <span class="eyebrow reveal"><span class="h-px w-6 bg-sage-400/60"></span> Online Terapi</span>
+        <h2 class="reveal mt-4 text-balance font-serif text-3xl leading-tight text-sage-700 sm:text-4xl">
+          Neredeyseniz, destek orada
+        </h2>
+        <p class="reveal mt-5 max-w-prose2 text-pretty leading-relaxed text-sage-600/90">
+          Şehir dışında olmak, yoğun bir tempo ya da evinizin konforunu tercih etmek...
+          Online terapi, yüz yüze görüşmeyle benzer etkinlikte, güvenli ve şifreli bir
+          ortamda destek almanızı sağlar.
+        </p>
+        <ul data-reveal-group class="reveal mt-7 space-y-3 text-sm text-sage-600/90">
+          {['Şifreli, güvenli görüşme altyapısı', 'Türkiye’nin ve dünyanın her yerinden erişim', 'Yüz yüze ile aynı kalite ve gizlilik'].map((t) => (
+            <li class="reveal flex items-center gap-3">
+              <span class="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-sage-400/12 text-sage-500"><Icon name="check" class="h-4 w-4" /></span>
+              {t}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <AppointmentCTA />
+</Layout>

@@ -1,0 +1,106 @@
+---
+import { nav, site } from '../data/site';
+const path = Astro.url.pathname;
+const isActive = (href: string) =>
+  href === '/' ? path === '/' : path.startsWith(href);
+---
+<header
+  data-header
+  class="fixed inset-x-0 top-0 z-50 transition-all duration-500 ease-calm
+         [&.is-scrolled]:bg-sand-50/85 [&.is-scrolled]:backdrop-blur-md
+         [&.is-scrolled]:shadow-[0_1px_0_rgba(71,82,74,0.08)]"
+>
+  <nav class="container-x flex h-20 items-center justify-between gap-6" aria-label="Ana menü">
+    <a href="/" class="group flex items-center gap-2.5" aria-label={`${site.name} ana sayfa`}>
+      <span class="grid h-9 w-9 place-items-center rounded-full bg-sage-400/15 text-sage-500
+                   transition-colors duration-500 group-hover:bg-sage-400/25">
+        <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M12 4c4 3 4 13 0 16-4-3-4-13 0-16Z"/>
+          <path d="M12 4v16"/>
+        </svg>
+      </span>
+      <span class="font-serif text-lg tracking-tight text-sage-700">Denge<span class="text-sage-400"> Psikoloji</span></span>
+    </a>
+
+    <ul class="hidden items-center gap-1 lg:flex">
+      {nav.map((item) => (
+        <li>
+          <a
+            href={item.href}
+            class:list={[
+              'relative rounded-full px-4 py-2 text-sm transition-colors duration-300',
+              isActive(item.href)
+                ? 'text-sage-700'
+                : 'text-sage-600/80 hover:text-sage-700',
+            ]}
+            aria-current={isActive(item.href) ? 'page' : undefined}
+          >
+            {item.label}
+            {isActive(item.href) && (
+              <span class="absolute inset-x-4 -bottom-0.5 h-px bg-sage-400/60"></span>
+            )}
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    <div class="hidden lg:block">
+      <a href="/randevu" class="btn-primary text-sm">Randevu Al</a>
+    </div>
+
+    <button
+      data-nav-toggle
+      type="button"
+      class="grid h-11 w-11 place-items-center rounded-full text-sage-700 transition-colors hover:bg-sage-50 lg:hidden"
+      aria-label="Menüyü aç"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
+    >
+      <svg viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true">
+        <path d="M4 7h16M4 12h16M4 17h16"/>
+      </svg>
+    </button>
+  </nav>
+
+  <!-- Mobil menü -->
+  <div
+    id="mobile-menu"
+    data-nav-menu
+    data-open="false"
+    class="fixed inset-0 z-40 translate-y-0 bg-sand-50/97 backdrop-blur-lg transition-opacity duration-500 ease-calm
+           data-[open=false]:pointer-events-none data-[open=false]:opacity-0
+           data-[open=true]:opacity-100 lg:hidden"
+  >
+    <div class="container-x flex h-20 items-center justify-between">
+      <span class="font-serif text-lg text-sage-700">Denge Psikoloji</span>
+      <button
+        data-nav-toggle
+        type="button"
+        class="grid h-11 w-11 place-items-center rounded-full text-sage-700 hover:bg-sage-50"
+        aria-label="Menüyü kapat"
+      >
+        <svg viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true">
+          <path d="M6 6l12 12M18 6 6 18"/>
+        </svg>
+      </button>
+    </div>
+    <ul class="container-x mt-6 flex flex-col gap-1">
+      {nav.map((item) => (
+        <li>
+          <a
+            href={item.href}
+            class:list={[
+              'block border-b border-sand-200/70 py-4 font-serif text-2xl transition-colors',
+              isActive(item.href) ? 'text-sage-500' : 'text-sage-700 hover:text-sage-500',
+            ]}
+          >
+            {item.label}
+          </a>
+        </li>
+      ))}
+      <li class="mt-6">
+        <a href="/randevu" class="btn-primary w-full">Randevu Al</a>
+      </li>
+    </ul>
+  </div>
+</header>

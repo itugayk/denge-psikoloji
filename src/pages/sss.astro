@@ -1,0 +1,54 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import Accordion from '../components/Accordion.astro';
+import AppointmentCTA from '../components/AppointmentCTA.astro';
+import Icon from '../components/Icon.astro';
+import { faqs } from '../data/site';
+
+const categories = ['Gizlilik', 'Ücret', 'Süreç', 'Online'];
+const byCategory = categories.map((c) => ({
+  name: c,
+  items: faqs.filter((f) => f.category === c),
+}));
+
+// SSS için JSON-LD (FAQPage)
+const faqLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+const catIcons: Record<string, string> = {
+  Gizlilik: 'lock', Ücret: 'heart', Süreç: 'clock', Online: 'video',
+};
+---
+<Layout title="Sık Sorulan Sorular" description="Gizlilik, ücret, seans süresi ve online terapi hakkında sık sorulan sorular ve sakin yanıtlar.">
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(faqLd)} />
+
+  <PageHero eyebrow="Sık Sorulan Sorular" title="Merak ettikleriniz, sakin yanıtlarla">
+    <p>
+      Terapiye başlamadan önce aklınıza takılanlar burada. Aradığınız yanıtı bulamazsanız,
+      bize çekinmeden ulaşabilirsiniz — her soru değerlidir.
+    </p>
+  </PageHero>
+
+  <div class="container-x space-y-16 pb-8">
+    {byCategory.map((group) => (
+      <section data-reveal-group>
+        <div class="reveal mb-2 flex items-center gap-3">
+          <span class="grid h-10 w-10 place-items-center rounded-xl bg-sage-400/12 text-sage-500">
+            <Icon name={catIcons[group.name]} class="h-5 w-5" />
+          </span>
+          <h2 class="font-serif text-2xl text-sage-700">{group.name}</h2>
+        </div>
+        <Accordion items={group.items} />
+      </section>
+    ))}
+  </div>
+
+  <AppointmentCTA />
+</Layout>

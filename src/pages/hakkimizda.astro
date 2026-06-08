@@ -1,0 +1,111 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import TherapistIntro from '../components/TherapistIntro.astro';
+import AppointmentCTA from '../components/AppointmentCTA.astro';
+import Icon from '../components/Icon.astro';
+
+const values = [
+  {
+    icon: 'lock',
+    title: 'Mahremiyet',
+    text: 'Paylaştığınız her şey kutsaldır. Gizlilik, çalışmamızın değil; var oluşumuzun temelidir.',
+  },
+  {
+    icon: 'heart',
+    title: 'Yargısızlık',
+    text: 'Burada doğru ya da yanlış hisler yoktur. Olduğunuz hâliyle, koşulsuz bir kabulle karşılanırsınız.',
+  },
+  {
+    icon: 'leaf',
+    title: 'Sabır',
+    text: 'İyileşmenin kendi ritmi vardır. Sizi asla acele ettirmez, kendi hızınıza saygı duyarız.',
+  },
+  {
+    icon: 'compass',
+    title: 'Birliktelik',
+    text: 'Yolu birlikte yürürüz. Siz uzmanı kendi hayatınızın, biz de sürece eşlik eden rehberiz.',
+  },
+];
+---
+<Layout title="Hakkımızda" description="Denge Psikoloji & Terapi ve kurucusu Uzm. Klinik Psk. Elif Doğan hakkında. Yargısız, gizlilik odaklı bir terapi anlayışı.">
+  <PageHero eyebrow="Hakkımızda" title="İyileşmenin güvenli bir alanda başladığına inanıyoruz">
+    <p>
+      Denge Psikoloji & Terapi, İstanbul Kadıköy'de; kaygıdan ilişkilere, travmadan
+      kişisel gelişime kadar geniş bir yelpazede, sıcak ve gizlilik odaklı bir destek sunar.
+    </p>
+  </PageHero>
+
+  <TherapistIntro variant="full" />
+
+  <!-- Değerler -->
+  <section class="relative overflow-hidden bg-sand-100/60 py-20 md:py-28">
+    <div class="grain absolute inset-0 opacity-60"></div>
+    <div class="container-x relative">
+      <div data-reveal-group class="max-w-2xl">
+        <span class="eyebrow reveal"><span class="h-px w-6 bg-sage-400/60"></span> Değerlerimiz</span>
+        <h2 class="reveal mt-4 text-balance font-serif text-3xl leading-tight text-sage-700 sm:text-4xl">
+          Çalışmamızın dayandığı dört temel
+        </h2>
+      </div>
+      <div data-reveal-group class="mt-14 grid gap-6 sm:grid-cols-2">
+        {values.map((v) => (
+          <div class="reveal flex items-start gap-5 rounded-3xl border border-sand-200/80 bg-white/70 p-7">
+            <span class="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-sage-400/12 text-sage-500">
+              <Icon name={v.icon} class="h-6 w-6" />
+            </span>
+            <div>
+              <h3 class="font-serif text-xl text-sage-700">{v.title}</h3>
+              <p class="mt-2 text-pretty leading-relaxed text-sage-600/85">{v.text}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Merkez / mekan -->
+  <section class="container-x py-20 md:py-28">
+    <div class="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
+      <div data-reveal-group>
+        <span class="eyebrow reveal"><span class="h-px w-6 bg-sage-400/60"></span> Mekânımız</span>
+        <h2 class="reveal mt-4 text-balance font-serif text-3xl leading-tight text-sage-700 sm:text-4xl">
+          Nefes alabileceğiniz, sakin bir oda
+        </h2>
+        <p class="reveal mt-5 max-w-prose2 text-pretty leading-relaxed text-sage-600/90">
+          Yumuşak ışık, doğal dokular ve sessizlik... Terapi odamızı, içeri adım attığınız
+          anda omuzlarınızdan bir yükün indiğini hissedeceğiniz şekilde tasarladık.
+          Dilerseniz aynı huzuru online seanslarda, kendi güvenli alanınızdan da yaşayabilirsiniz.
+        </p>
+        <ul data-reveal-group class="reveal mt-8 space-y-3 text-sm text-sage-600/90">
+          {['Kadıköy merkezde, ulaşımı kolay konum', 'Sessiz ve mahremiyeti korunan oda', 'Online seans için şifreli görüşme altyapısı'].map((t) => (
+            <li class="reveal flex items-center gap-3">
+              <span class="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-sage-400/12 text-sage-500"><Icon name="check" class="h-4 w-4" /></span>
+              {t}
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div data-reveal-group>
+        <div class="reveal relative aspect-[5/4] overflow-hidden rounded-[2.5rem] shadow-soft">
+          <svg viewBox="0 0 500 400" class="h-full w-full" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Sakin terapi odası ilüstrasyonu">
+            <defs>
+              <linearGradient id="rg" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#f0ebe3" /><stop offset="1" stop-color="#e6ddd0" />
+              </linearGradient>
+            </defs>
+            <rect width="500" height="400" fill="url(#rg)" />
+            <rect x="40" y="60" width="120" height="160" rx="8" fill="#aab9ab" opacity="0.5" />
+            <path d="M300 260 q60 -40 120 0 v60 h-120 Z" fill="#8a9a8b" opacity="0.7" />
+            <rect x="60" y="300" width="380" height="20" rx="10" fill="#d6c8b4" />
+            <circle cx="100" cy="120" r="36" fill="#f0ebe3" opacity="0.8" />
+            <path d="M0 340 h500 v60 h-500 Z" fill="#c2ad92" opacity="0.4" />
+          </svg>
+          <div class="grain absolute inset-0"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <AppointmentCTA />
+</Layout>

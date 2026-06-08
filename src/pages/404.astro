@@ -1,0 +1,20 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Icon from '../components/Icon.astro';
+---
+<Layout title="Sayfa Bulunamadı">
+  <section class="container-x flex min-h-[70vh] flex-col items-center justify-center py-32 text-center">
+    <span class="grid h-16 w-16 place-items-center rounded-full bg-sage-400/12 text-sage-500">
+      <Icon name="compass" class="h-8 w-8" />
+    </span>
+    <p class="mt-8 font-serif text-6xl text-sage-300">404</p>
+    <h1 class="mt-2 font-serif text-3xl text-sage-700">Aradığınız sayfa burada değil</h1>
+    <p class="mt-4 max-w-md text-pretty leading-relaxed text-sage-600/85">
+      Yolu kaybetmiş olabiliriz. Hiç sorun değil — derin bir nefes alın ve ana sayfaya dönelim.
+    </p>
+    <div class="mt-8 flex flex-wrap items-center justify-center gap-4">
+      <a href="/" class="btn-primary">Ana Sayfaya Dön <Icon name="arrow" class="h-4 w-4" /></a>
+      <a href="/iletisim" class="btn-ghost">İletişim</a>
+    </div>
+  </section>
+</Layout>

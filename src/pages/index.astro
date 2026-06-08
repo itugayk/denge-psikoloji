@@ -1,0 +1,71 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import SpecialtyCard from '../components/SpecialtyCard.astro';
+import ApproachPreview from '../components/ApproachPreview.astro';
+import TherapistIntro from '../components/TherapistIntro.astro';
+import Accordion from '../components/Accordion.astro';
+import AppointmentCTA from '../components/AppointmentCTA.astro';
+import Icon from '../components/Icon.astro';
+import { specialties, faqs } from '../data/site';
+
+const homeFaqs = faqs.slice(0, 5);
+---
+<Layout>
+  <Hero />
+
+  <!-- Güven şeridi -->
+  <section class="border-y border-sand-200/70 bg-white/50">
+    <div class="container-x flex flex-wrap items-center justify-center gap-x-10 gap-y-4 py-7 text-sm text-sage-500/80">
+      <span class="inline-flex items-center gap-2"><Icon name="lock" class="h-4 w-4 text-sage-400" /> Gizlilik odaklı</span>
+      <span class="h-1 w-1 rounded-full bg-sand-300"></span>
+      <span class="inline-flex items-center gap-2"><Icon name="heart" class="h-4 w-4 text-sage-400" /> Yargısız alan</span>
+      <span class="h-1 w-1 rounded-full bg-sand-300"></span>
+      <span class="inline-flex items-center gap-2"><Icon name="video" class="h-4 w-4 text-sage-400" /> Online & yüz yüze</span>
+      <span class="h-1 w-1 rounded-full bg-sand-300"></span>
+      <span class="inline-flex items-center gap-2"><Icon name="leaf" class="h-4 w-4 text-sage-400" /> Kendi hızınızda</span>
+    </div>
+  </section>
+
+  <!-- Uzmanlık alanları -->
+  <section class="container-x py-20 md:py-28">
+    <SectionHeading eyebrow="Uzmanlık Alanları" title="Birlikte çalışabileceğimiz konular">
+      <p class="text-pretty leading-relaxed text-sage-600/90">
+        Hangi konuda zorlanıyor olursanız olun, başlangıç noktası aynı: güvenli ve
+        yargısız bir alan. Aşağıdaki alanlarda destek sunuyoruz.
+      </p>
+    </SectionHeading>
+
+    <div data-reveal-group class="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {specialties.map((item) => <SpecialtyCard item={item} />)}
+    </div>
+  </section>
+
+  <ApproachPreview />
+
+  <TherapistIntro />
+
+  <!-- SSS önizleme -->
+  <section class="container-x py-20 md:py-28">
+    <div class="grid gap-12 lg:grid-cols-12 lg:gap-16">
+      <div class="lg:col-span-5">
+        <SectionHeading eyebrow="Sık Sorulanlar" title="Aklınızdaki sorulara, sakin yanıtlar">
+          <p class="text-pretty leading-relaxed text-sage-600/90">
+            Terapiye başlamadan önce merak edilenler. Gizlilik, ücret ve süreçle ilgili
+            daha fazla soru için SSS sayfamıza göz atabilirsiniz.
+          </p>
+          <a href="/sss" class="mt-7 inline-flex items-center gap-2 text-sm font-medium text-sage-600 transition-colors hover:text-sage-800">
+            Tüm soruları gör
+            <Icon name="arrow" class="h-4 w-4" />
+          </a>
+        </SectionHeading>
+      </div>
+      <div class="lg:col-span-7">
+        <Accordion items={homeFaqs} />
+      </div>
+    </div>
+  </section>
+
+  <AppointmentCTA />
+</Layout>

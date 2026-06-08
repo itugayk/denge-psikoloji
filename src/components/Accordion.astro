@@ -1,0 +1,49 @@
+---
+import type { FaqItem } from '../data/site';
+interface Props {
+  items: FaqItem[];
+  showCategory?: boolean;
+}
+const { items, showCategory = false } = Astro.props;
+---
+<div data-accordion data-reveal-group class="divide-y divide-sand-200/80 border-y border-sand-200/80">
+  {items.map((item, i) => (
+    <div data-accordion-item data-open="false" class="reveal group">
+      <h3>
+        <button
+          data-accordion-trigger
+          type="button"
+          aria-expanded="false"
+          id={`faq-trigger-${i}`}
+          aria-controls={`faq-panel-${i}`}
+          class="flex w-full items-center justify-between gap-6 py-6 text-left transition-colors hover:text-sage-600"
+        >
+          <span class="flex flex-col gap-1">
+            {showCategory && (
+              <span class="text-[0.68rem] font-medium uppercase tracking-wider2 text-sage-400">{item.category}</span>
+            )}
+            <span class="font-serif text-lg text-sage-700 sm:text-xl">{item.q}</span>
+          </span>
+          <span
+            class="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-sand-300/70 text-sage-500
+                   transition-all duration-500 ease-calm group-data-[open=true]:rotate-45 group-data-[open=true]:border-sage-400 group-data-[open=true]:bg-sage-50"
+            aria-hidden="true"
+          >
+            <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+              <path d="M12 5v14M5 12h14" />
+            </svg>
+          </span>
+        </button>
+      </h3>
+      <div
+        data-accordion-panel
+        id={`faq-panel-${i}`}
+        role="region"
+        aria-labelledby={`faq-trigger-${i}`}
+        class="h-0 overflow-hidden"
+      >
+        <p class="max-w-prose2 pb-7 pr-12 leading-relaxed text-sage-600/90">{item.a}</p>
+      </div>
+    </div>
+  ))}
+</div>

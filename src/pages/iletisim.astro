@@ -1,0 +1,99 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import Icon from '../components/Icon.astro';
+import { site } from '../data/site';
+
+const channels = [
+  { icon: 'phone', t: 'Telefon', v: site.phone, href: `tel:${site.phoneHref}`, d: 'Hafta içi ve Cumartesi arayabilirsiniz' },
+  { icon: 'mail', t: 'E-posta', v: site.email, href: `mailto:${site.email}`, d: 'En kısa sürede yanıtlıyoruz' },
+  { icon: 'message', t: 'WhatsApp', v: site.whatsapp, href: `https://wa.me/${site.whatsapp.replace(/[^0-9]/g, '')}`, d: 'Yazışmayı tercih ederseniz' },
+];
+---
+<Layout title="İletişim" description="Denge Psikoloji & Terapi ile iletişime geçin. Kadıköy / İstanbul'da yüz yüze ve online terapi. Gizlilik odaklı destek.">
+  <PageHero eyebrow="İletişim" title="Bize ulaşmak için bir neden aramayın">
+    <p>
+      Bir soru sormak, randevu almak ya da yalnızca tanışmak için... Size en uygun
+      kanaldan bize ulaşabilirsiniz. Her mesaj gizlilik ilkesiyle korunur.
+    </p>
+  </PageHero>
+
+  <section class="container-x pb-8">
+    <div data-reveal-group class="grid gap-5 sm:grid-cols-3">
+      {channels.map((c) => (
+        <a href={c.href} class="reveal card group p-7 hover:-translate-y-1 hover:border-sage-300 hover:bg-white hover:shadow-soft">
+          <span class="grid h-12 w-12 place-items-center rounded-2xl bg-sage-400/12 text-sage-500 transition-colors group-hover:bg-sage-400/20">
+            <Icon name={c.icon} class="h-6 w-6" />
+          </span>
+          <h2 class="mt-5 font-serif text-lg text-sage-700">{c.t}</h2>
+          <p class="mt-1 text-sm text-sage-600">{c.v}</p>
+          <p class="mt-2 text-xs text-sage-500/75">{c.d}</p>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section class="container-x py-16">
+    <div class="grid gap-10 lg:grid-cols-12 lg:gap-14">
+      <!-- Adres & bilgi -->
+      <div data-reveal-group class="lg:col-span-5">
+        <span class="eyebrow reveal"><span class="h-px w-6 bg-sage-400/60"></span> Merkezimiz</span>
+        <h2 class="reveal mt-4 text-balance font-serif text-3xl leading-tight text-sage-700 sm:text-4xl">Kadıköy'de, kalbinde huzur olan bir adres</h2>
+
+        <div data-reveal-group class="mt-8 space-y-5">
+          <div class="reveal flex items-start gap-4">
+            <span class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-sage-400/12 text-sage-500"><Icon name="pin" class="h-5 w-5" /></span>
+            <div>
+              <p class="font-medium text-sage-700">Adres</p>
+              <p class="mt-1 text-sm leading-relaxed text-sage-600/85">{site.address.full}</p>
+            </div>
+          </div>
+          <div class="reveal flex items-start gap-4">
+            <span class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-sage-400/12 text-sage-500"><Icon name="clock" class="h-5 w-5" /></span>
+            <div>
+              <p class="font-medium text-sage-700">Çalışma saatleri</p>
+              <p class="mt-1 text-sm leading-relaxed text-sage-600/85">{site.hours}</p>
+              <p class="text-sm leading-relaxed text-sage-600/85">Pazar: Kapalı</p>
+            </div>
+          </div>
+          <div class="reveal flex items-start gap-4">
+            <span class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-sage-400/12 text-sage-500"><Icon name="video" class="h-5 w-5" /></span>
+            <div>
+              <p class="font-medium text-sage-700">Online görüşme</p>
+              <p class="mt-1 text-sm leading-relaxed text-sage-600/85">Türkiye ve dünyanın her yerinden, güvenli görüşme imkânı.</p>
+            </div>
+          </div>
+        </div>
+
+        <a href="/randevu" class="reveal btn-primary mt-9">Randevu Al <Icon name="arrow" class="h-4 w-4" /></a>
+      </div>
+
+      <!-- Harita (soyut) -->
+      <div data-reveal-group class="lg:col-span-7">
+        <div class="reveal relative aspect-[16/11] overflow-hidden rounded-[2.5rem] border border-sand-200/80 shadow-soft">
+          <svg viewBox="0 0 640 440" class="h-full w-full" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Konum haritası ilüstrasyonu">
+            <rect width="640" height="440" fill="#e6ebe6" />
+            <g stroke="#cdd6ce" stroke-width="2" fill="none">
+              <path d="M0 120 H640 M0 240 H640 M0 360 H640" />
+              <path d="M160 0 V440 M360 0 V440 M520 0 V440" />
+            </g>
+            <path d="M0 240 C 160 230 200 360 360 360 H640" stroke="#aab9ab" stroke-width="10" fill="none" opacity="0.7" />
+            <path d="M360 0 C 360 120 200 140 160 240" stroke="#c2ad92" stroke-width="8" fill="none" opacity="0.6" />
+            <rect x="40" y="280" width="90" height="60" rx="6" fill="#aab9ab" opacity="0.4" />
+            <rect x="440" y="60" width="110" height="80" rx="6" fill="#c2ad92" opacity="0.35" />
+            <!-- pin -->
+            <g transform="translate(360 230)">
+              <path d="M0 0 c -22 -26 -34 -42 -34 -60 a 34 34 0 0 1 68 0 c 0 18 -12 34 -34 60 Z" fill="#57655a" />
+              <circle cx="0" cy="-60" r="12" fill="#f0ebe3" />
+            </g>
+          </svg>
+          <div class="absolute bottom-4 left-4 rounded-2xl border border-sand-200/80 bg-white/90 px-4 py-3 shadow-soft backdrop-blur">
+            <p class="font-serif text-sm text-sage-700">{site.shortName}</p>
+            <p class="text-xs text-sage-500/80">{site.address.district} / {site.address.city}</p>
+          </div>
+        </div>
+        <p class="reveal mt-4 text-xs text-sage-500/70">Harita yalnızca temsilîdir. Tam adres ve yol tarifi için bizimle iletişime geçebilirsiniz.</p>
+      </div>
+    </div>
+  </section>
+</Layout>
