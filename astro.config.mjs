@@ -11,6 +11,10 @@ export default defineConfig({
   ],
   build: {
     inlineStylesheets: 'auto',
+    // Her sayfa kendi .html dosyası olarak üretilir (örn. /hakkimizda.html).
+    // nginx bunu yönlendirme olmadan, temiz URL ile sunar (/hakkimizda).
+    format: 'file',
   },
+  trailingSlash: 'never',
   compressHTML: true,
 });
